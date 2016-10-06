@@ -12,5 +12,6 @@ sobre la clasificación: dos atributos relevantes perderían peso entre otros ve
 
 Para corregir el posible sesgo se puede asignar un peso a las distancias de cada atributo,
 dándole así mayor importancia a los atributos más relevantes. Otra posibilidad consiste en tratar de determinar
-o ajustar los pesos con ejemplos conocidos de entrenamiento. Finalmente, antes de asignar pesos es recomendable 
+o ajustar los pesos con ejemplos conocidos de entrenamiento. 
+Finalmente, antes de asignar pesos es recomendable 
 identificar y eliminar los atributos que se consideran irrelevantes.
