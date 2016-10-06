@@ -1,1 +1,16 @@
 << descripcion >>
+La fase de entrenamiento del algoritmo consiste en almacenar los vectores característicos 
+y las etiquetas de las clases de los ejemplos de entrenamiento. En la fase de clasificación, 
+la evaluación del ejemplo (del que no se conoce su clase) es representada por un vector en el espacio característico. 
+Se calcula la distancia entre los vectores almacenados y el nuevo vector, 
+y se seleccionan los {\displaystyle k} k ejemplos más cercanos. 
+El nuevo ejemplo es clasificado con la clase que más se repite en los vectores seleccionados.
+
+Este método supone que los vecinos más cercanos nos dan la mejor clasificación y esto se hace utilizando todos los atributos; 
+el problema de dicha suposición es que es posible que se tengan muchos atributos irrelevantes que dominen 
+sobre la clasificación: dos atributos relevantes perderían peso entre otros veinte irrelevantes.
+
+Para corregir el posible sesgo se puede asignar un peso a las distancias de cada atributo,
+dándole así mayor importancia a los atributos más relevantes. Otra posibilidad consiste en tratar de determinar
+o ajustar los pesos con ejemplos conocidos de entrenamiento. Finalmente, antes de asignar pesos es recomendable 
+identificar y eliminar los atributos que se consideran irrelevantes.
