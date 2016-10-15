@@ -21,7 +21,6 @@ var
     CT2:Integer;
     CT3:Integer;
 begin
-
     CT3:=1;
     CT2:=1;
     TOTAL:=1;
