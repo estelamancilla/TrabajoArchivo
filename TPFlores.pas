@@ -9,33 +9,24 @@ type registro = record
                     Species : string;
                 end;
 
-
-
 var 
     datos : file of registro;
     M : ARRAY [1..120] of registro ;
     T : ARRAY [1..30] of registro;
     i : integer;
     r : registro;
-  
     CANT:integer;
-   
     TOTAL:Integer;
-
     CT1:Integer;
     CT2:Integer;
     CT3:Integer;
 begin
- 
 
     CT3:=1;
-
     CT2:=1;
     TOTAL:=1;
     CANT:=1;
     CT1:=1;
-
-
     Assign(datos, 'iris.dat');
     Reset(datos);
     while not Eof(datos) do
@@ -89,15 +80,14 @@ begin
             end;
         end;
     end;//end while
-        //
-        
+    
 
     close(datos);
 
     for i := 1 to 30 do
     begin
       writeln(i, ' ', t[i].Species, t[i].Petal_Length, t[i].Petal_Width);
-      readkey();
+      readkey ();
       end;
 
 end.
