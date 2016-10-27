@@ -1,6 +1,6 @@
 program iris;
-uses crt;
-
+uses crt,math;
+const k = 3;
 type registro = record
                     Sepal_Length : real;
                     Sepal_Width : real;
@@ -8,18 +8,60 @@ type registro = record
                     Petal_Width : real;
                     Species : string;
                 end;
-
 var 
     datos : file of registro;
     M : ARRAY [1..120] of registro ;
     T : ARRAY [1..30] of registro;
-    i : integer;
+    D : ARRAY [1..120] of real;
+    i:integer;
     r : registro;
     CANT:integer;
     TOTAL:Integer;
     CT1:Integer;
     CT2:Integer;
     CT3:Integer;
+    x2:integer;
+    y2:integer;
+    
+    resultado:string;
+    x: real;
+    y: real;
+function distancia (x1,y1,x2,y2:real):Real;
+    begin
+        distancia:= sqrt(power(x1-x2,2)+power(y1-y2,2));
+                  
+    end;
+
+procedure calcular_diferencia(x: real; y:real);
+var i : integer;
+   
+    begin
+        For i:=1 to 120 do
+            D[i] := distancia(x,y, m[i].Petal_Length, m[i].Petal_Width);
+    end;  
+
+procedure ordenar () ;
+var
+i: integer;
+j: integer;
+aux:real;
+    begin
+
+    aux:=0;
+        for i:= 1 to 119 do
+         begin
+         
+           for j := i+1 to 120 do
+            begin
+            
+                aux:= D[i];
+                D[i]:= D[j];
+                D[j]:= aux;
+                //invertir tambien el arreglo de datos
+            end;
+         end;   
+    end;
+
 begin
     CT3:=1;
     CT2:=1;
@@ -84,9 +126,24 @@ begin
     close(datos);
 
     for i := 1 to 30 do
-    begin
-      writeln(i, ' ', t[i].Species, t[i].Petal_Length, t[i].Petal_Width);
-      readkey ();
-      end;
+       begin
+          writeln(i, ' ', t[i].Species, t[i].Petal_Length, t[i].Petal_Width);
+          readkey ();
+       end;
 
+  end;
+
+for i:= 1 to 120 do 
+    begin
+        readln(x);
+        readln(y);
+        resultado:=calcular_diferencia(x,y);
+        writeln(resultado);
+        readkey();
+    end;
+ 
+
+ for i:= 1 to k do
+   
+    
 end.
