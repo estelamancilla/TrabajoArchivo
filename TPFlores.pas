@@ -44,20 +44,24 @@ procedure ordenar () ;
 var
 i: integer;
 j: integer;
-aux:real;
+aux_d:real;
+aux_m : registro;
     begin
 
-    aux:=0;
+    aux_d:=0;
         for i:= 1 to 119 do
          begin
          
            for j := i+1 to 120 do
             begin
             
-                aux:= D[i];
+                aux_d:= D[i];
                 D[i]:= D[j];
-                D[j]:= aux;
-                //invertir tambien el arreglo de datos
+                D[j]:= aux_d;
+                Aux_m:=M[i];
+                M[i]:=M[j];
+                M[j]:= Aux_m;
+                
             end;
          end;   
     end;
@@ -125,15 +129,13 @@ begin
 
     close(datos);
 
-    for i := 1 to 30 do
+    for i:= 1 to 30 do
        begin
           writeln(i, ' ', t[i].Species, t[i].Petal_Length, t[i].Petal_Width);
           readkey ();
        end;
 
-  end;
-
-for i:= 1 to 120 do 
+{for i:= 1 to 120 do 
     begin
         readln(x);
         readln(y);
@@ -145,5 +147,5 @@ for i:= 1 to 120 do
 
  for i:= 1 to k do
    
-    
+}  
 end.
