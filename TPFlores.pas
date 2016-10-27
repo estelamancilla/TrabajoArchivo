@@ -80,7 +80,7 @@ begin
               
         if (r.species) = 'setosa' then
         begin  
-            If CT1 <= 10 then 
+            If CT1 <= k then 
             begin
                 T[CANT]:= r;
                 CANT:= CANT+1;
@@ -96,7 +96,7 @@ begin
 
         if (r.species) = 'versicolor' then
         begin
-            if ct2<= 10 then
+            if ct2<= k then
             begin      
                 T[CANT]:= r;
                 CANT:=CANT+1;
@@ -112,7 +112,7 @@ begin
 
         if (r.species) = 'virginica' then
         begin
-            if ct3<=10 then
+            if ct3<=k then
             begin
                 T[CANT]:= r;
                 CANT:=CANT+1;
@@ -144,8 +144,6 @@ begin
         readkey();
     end;
  
-
- for i:= 1 to k do
-   
-}  
+ }  
+ 
 end.
