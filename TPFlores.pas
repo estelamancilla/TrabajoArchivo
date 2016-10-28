@@ -1,6 +1,6 @@
 program iris;
 uses crt,math;
-const k = 3;
+const k = 5;
 type registro = record
                     Sepal_Length : real;
                     Sepal_Width : real;
@@ -33,13 +33,15 @@ var
     S: real;
     Tip: string;
 
+
+
     function distancia (x1,y1,x2,y2:real):Real;
          begin
             distancia:= sqrt(power(x1-x2,2)+power(y1-y2,2));
          end;
 
-    function calcular (x1: real; y1:real):Real;
-        var 
+    procedure ordenar_por_distancia (x1: real; y1:real);
+        var i:integer;
             aux_d:real;
             aux_m : registro;
             CTver: Integer;
@@ -53,25 +55,74 @@ var
                 begin
                     D[i] := distancia(x1,y1, m[i].Petal_Length, m[i].Petal_Width);
                 end;
-                begin  
-                    For i:= 1 to 119 do
-                        begin
-                            for j := i+1 to 120 do
-                                begin
-                                    if D[i] > D[j] then
-                                        begin 
-                                            aux_d:= D[i];
-                                            D[i]:= D[j];
-                                            D[j]:= aux_d;
-                                            Aux_m:=M[i];
-                                            M[i]:=M[j];
-                                            M[j]:= Aux_m;
-                                        end;
-                                end;   
-                        end;
-                end;
+                
+                For i:= 1 to 119 do
+                    begin
+                        for j := i+1 to 120 do
+                            begin
+                                if D[i] > D[j] then
+                                    begin 
+                                        aux_d:= D[i];
+                                        D[i]:= D[j];
+                                        D[j]:= aux_d;
+                                        Aux_m:=M[i];
+                                        M[i]:=M[j];
+                                        M[j]:= Aux_m;
+                                    end;
+                            end;   
+                    end;
+            
         end;
-        
+    function predecir_tipo(x: real; y:real):string;
+    var i :integer;
+    cantidad_setosa : integer;
+    cantidad_virginica : integer;
+    cantidad_versicolor : integer;
+    begin
+        ordenar_por_distancia(x,y);
+        cantidad_setosa:=0;
+        cantidad_versicolor:=0;
+        cantidad_virginica:=0;
+        for i := 1 to k do
+          begin
+                if m[i].species = 'setosa' then
+                  cantidad_setosa := cantidad_setosa + 1;
+                
+                if m[i].species = 'virginica' then
+                  cantidad_virginica := cantidad_virginica + 1;
+
+                if m[i].species = 'versicolor' then
+                  cantidad_versicolor := cantidad_versicolor + 1;
+
+          end;
+
+        if cantidad_setosa>cantidad_versicolor then
+        begin
+            if cantidad_setosa > cantidad_virginica then
+              begin
+                predecir_tipo:= 'setosa';
+              end
+              else
+              begin
+                predecir_tipo:='virginica';
+              end;
+        end 
+        else
+        begin
+            if cantidad_versicolor > cantidad_virginica then
+            begin
+              predecir_tipo:= 'versicolor';
+            end 
+            else
+            begin
+              predecir_tipo:= 'virginica';
+            end;
+        end;
+          //writeln(cantidad_setosa, cantidad_versicolor, cantidad_virginica);
+
+    end;        
+
+
 begin
     CTver:=1;
     CTS:=1;
@@ -131,19 +182,23 @@ begin
         end;//end while
     close(datos);
 
+{
     Writeln ('ingrese el largo');
     ReadLn (Lar);
     WriteLn ('Ingrese ancho');
     ReadLn (An);
-        Tip := tipo (Lar,An);
+        Tip := predecir_tipo(Lar,An);
         writeln (Tip);
+ }       
 
     For i := 1 to 30 do
         begin
-            if  tipo(T[i].Petal_Length, T[i].Petal_Width) = t[i].Species then
+            if  predecir_tipo(T[i].Petal_Length, T[i].Petal_Width) = t[i].Species then
           begin
              S:= S+1;
           end;
+          writeln(i, predecir_tipo(T[i].Petal_Length, T[i].Petal_Width), t[i].species);
+            readkey();
     end;
     writeln((S/30*100):3:2,'%');
     Readkey();
