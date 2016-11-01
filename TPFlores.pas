@@ -32,8 +32,8 @@ var
     y1:real;
     S: real;
     Tip: string;
-    Menu: integer;
-    Resultado : real;
+    opcion: integer;
+    Resultado: string;
 
     function distancia (x1,y1,x2,y2:real):Real;
          begin
@@ -195,24 +195,24 @@ begin
     Writeln ('Precione 1 - Para Ingresar Las medidas');
     Writeln ('Precione 2 - Para calcular su porcentaje');
     Writeln ('Precione 3 - Para Finalizar Calculo');
-    ReadLn (menu);
+    ReadLn (opcion);
 
-    If menu = 1 then
+    If opcion = 1 then
       begin
             Writeln ('ingrese el largo');
             ReadLn (x1);
             WriteLn ('Ingrese ancho');
             ReadLn (y1);
-           // Resultado := ordenar_por_distancia(x1,y1);
+            Resultado:= predecir_tipo(x1,y1);
             writeln (Resultado);
             Readkey ()
         End 
         Else
-    if menu =2 then
+    if opcion =2 then
       begin
         writeln ('El porcentaje es: '); writeln((S/30*100):3:2,'%');
         Readkey();
       end
      else
-     if menu=3 then 
+     if opcion =3 then 
     end.
