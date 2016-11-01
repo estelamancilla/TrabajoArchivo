@@ -33,7 +33,7 @@ var
     S: real;
     Tip: string;
     Menu: integer;
-    Resultado : Real;
+    Resultado : real;
 
     function distancia (x1,y1,x2,y2:real):Real;
          begin
@@ -203,7 +203,7 @@ begin
             ReadLn (x1);
             WriteLn ('Ingrese ancho');
             ReadLn (y1);
-            //Resultado := ordenar_por_distancia(x1,y1);
+           // Resultado := ordenar_por_distancia(x1,y1);
             writeln (Resultado);
             Readkey ()
         End 
