@@ -28,12 +28,12 @@ var
     CTver:Integer;
     CTS:Integer;
     CTVir:Integer;
-    An:real;
-    Lar:real;
+    x1:real;
+    y1:real;
     S: real;
     Tip: string;
-
-
+    Menu: integer;
+    Resultado : Real;
 
     function distancia (x1,y1,x2,y2:real):Real;
          begin
@@ -122,7 +122,6 @@ var
 
     end;        
 
-
 begin
     CTver:=1;
     CTS:=1;
@@ -180,16 +179,7 @@ begin
                 end;
             end;
         end;//end while
-    close(datos);
-
-{
-    Writeln ('ingrese el largo');
-    ReadLn (Lar);
-    WriteLn ('Ingrese ancho');
-    ReadLn (An);
-        Tip := predecir_tipo(Lar,An);
-        writeln (Tip);
- }       
+    close(datos);    
 
     For i := 1 to 30 do
         begin
@@ -200,7 +190,29 @@ begin
           writeln(i, predecir_tipo(T[i].Petal_Length, T[i].Petal_Width), t[i].species);
             readkey();
     end;
-    writeln((S/30*100):3:2,'%');
-    Readkey();
+    
 
-end.
+    Writeln ('Precione 1 - Para Ingresar Las medidas');
+    Writeln ('Precione 2 - Para calcular su porcentaje');
+    Writeln ('Precione 3 - Para Finalizar Calculo');
+    ReadLn (menu);
+
+    If menu = 1 then
+      begin
+            Writeln ('ingrese el largo');
+            ReadLn (x1);
+            WriteLn ('Ingrese ancho');
+            ReadLn (y1);
+            //Resultado := ordenar_por_distancia(x1,y1);
+            writeln (Resultado);
+            Readkey ()
+        End 
+        Else
+    if menu =2 then
+      begin
+        writeln ('El porcentaje es: '); writeln((S/30*100):3:2,'%');
+        Readkey();
+      end
+     else
+     if menu=3 then 
+    end.
