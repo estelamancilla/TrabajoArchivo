@@ -49,7 +49,7 @@ var
                 CTVir:=0;
                 For i:=1 to 120 do
                 begin
-                    D[i] := distancia(x1,y1, m[i].Petal_Length, m[i].Petal_Width);
+                    D[i] := distancia(x1,y1, m[i].petal_Length, m[i].petal_Width);
                 end;
                 
                 For i:= 1 to 119 do
@@ -179,13 +179,13 @@ begin
 
     For i := 1 to 30 do
         begin
-            if  predecir_tipo(T[i].Petal_Length, T[i].Petal_Width) = t[i].Species then
+            if  predecir_tipo(T[i].sepal_Length, T[i].sepal_Width) = t[i].Species then
           begin
              S:= S+1;
           end;
-          writeln(i, predecir_tipo(T[i].Petal_Length, T[i].Petal_Width), t[i].species);
+            writeln(i, predecir_tipo(T[i].Petal_Length, T[i].Petal_Width), t[i].species);
             readkey();
-    end;
+            end;
     
 
     Writeln ('Precione 1 - Para Ingresar Las medidas');
