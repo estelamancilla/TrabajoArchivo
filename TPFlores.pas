@@ -31,7 +31,6 @@ var
     x1:real;
     y1:real;
     S: real;
-    Tip: string;
     opcion: integer;
     Resultado: string;
 
@@ -44,9 +43,6 @@ var
         var i:integer;
             aux_d:real;
             aux_m : registro;
-            CTver: Integer;
-            CTS:Integer;
-            CTVir:Integer;
         begin
                 CTver:= 0;
                 CTS:=0;
@@ -213,6 +209,6 @@ begin
         writeln ('El porcentaje es: '); writeln((S/30*100):3:2,'%');
         Readkey();
       end
-     else
-     if opcion =3 then 
+      else
+    if opcion =3 then 
     end.
